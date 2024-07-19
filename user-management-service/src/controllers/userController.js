@@ -43,7 +43,32 @@ const loginUser = async (req, res) => {
   }
 };
 
+const changeUsername = async (req, res) => {
+  const { newUsername } = req.body;
+  const user = await User.findById(req.user._id);
+
+  if (!user) {
+    return res.status(404).json({ message: 'User not found' });
+  }
+
+  const usernameExists = await User.findOne({ username: newUsername });
+
+  if (usernameExists) {
+    return res.status(400).json({ message: 'Username already taken' });
+  }
+
+  user.username = newUsername;
+  await user.save();
+
+  res.json({
+    _id: user._id,
+    username: user.username,
+    message: 'Username updated successfully',
+  });
+};
+
 module.exports = {
   registerUser,
   loginUser,
+  changeUsername,
 };
