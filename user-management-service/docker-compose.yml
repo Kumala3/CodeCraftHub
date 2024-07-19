@@ -1,6 +1,8 @@
 services:
   app:
-    build: .
+    build: 
+      context: ./src
+      dockerfile: Dockerfile
     container_name: user-management-service
     env_file:
       - .env
@@ -10,7 +12,6 @@ services:
       - mongo
     volumes:
       - .:/usr/src/app
-      - /usr/src/app/node_modules
 
   mongo:
     image: mongo:4.4
