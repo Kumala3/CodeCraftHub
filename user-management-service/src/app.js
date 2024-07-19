@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use('/api/users', userRoutes);
 
-app.user(errorHandler);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
