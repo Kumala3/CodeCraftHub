@@ -1,5 +1,6 @@
 const { validationResult } = require('express-validator');
 
+// Middleware to validate incoming requests
 const validateRequest = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {

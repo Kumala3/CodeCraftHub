@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const generateToken = require('../config/jwt');
 
+// Controller to register a new user
 const registerUser = async (req, res) => {
   const { username, password } = req.body;
 
@@ -26,6 +27,7 @@ const registerUser = async (req, res) => {
   });
 };
 
+// Controller to login a user
 const loginUser = async (req, res) => {
   const { username, password } = req.body;
 
@@ -43,6 +45,7 @@ const loginUser = async (req, res) => {
   }
 };
 
+// Controller to change the username of a user
 const changeUsername = async (req, res) => {
   const { newUsername } = req.body;
   const user = await User.findById(req.user._id);

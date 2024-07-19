@@ -10,6 +10,7 @@ const validateRequest = require('../middlewares/validationMiddleware');
 
 const router = express.Router();
 
+// Route to register a new user with validation
 router.post(
   '/register',
   [
@@ -21,7 +22,11 @@ router.post(
   validateRequest,
   registerUser
 );
+
+// Route to login a user
 router.post('/login', loginUser);
+
+// Route to change username, protected by JWT authentication
 router.put('/change-username', protect, changeUsername);
 
 module.exports = router;

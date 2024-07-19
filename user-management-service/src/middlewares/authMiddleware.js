@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+// Middleware to protect routes by checking for a valid JWT token
 const protect = async (req, res, next) => {
   let token;
 

@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+// Function to generate a JWT token for a user
 const generateToken = (user) => {
   return jwt.sign(
     { id: user._id, username: user.username },
